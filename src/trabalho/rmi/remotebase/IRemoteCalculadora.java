@@ -3,8 +3,12 @@ package trabalho.rmi.remotebase;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import trabalho.rmi.cliente.Pessoa;
+
 public interface IRemoteCalculadora extends Remote {
 
-	public double calcula(double num1, char operacao, double num2) throws RemoteException;
+	public double verifica(Pessoa pessoa) throws RemoteException;
+	public void depositar(double valor, Pessoa pessoa) throws RemoteException;
+	public String sacar(double valor, Pessoa pessoa) throws RemoteException;
 
 }

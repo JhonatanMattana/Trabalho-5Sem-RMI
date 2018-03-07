@@ -23,7 +23,7 @@ public class Servidor implements IRemoteCalculadora {
 			System.out.println("Registrando Servidor...");
 
 			// Liga o objeto remoto (stub) no registry
-			Registry registry = LocateRegistry.getRegistry(9876);// porta do rmiregistry
+			Registry registry = LocateRegistry.getRegistry(8080);// porta do rmiregistry
 
 			registry.bind("servidor_aula", stub);
 

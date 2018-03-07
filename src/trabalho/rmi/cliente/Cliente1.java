@@ -9,18 +9,21 @@ public class Cliente1 {
 
 	public static void main(String[] args) {
 		try {
-			System.out.println("Registrando-se no servidor...");
-			Registry registry = LocateRegistry.getRegistry(9876);// null == localhost
+			System.out.println("Registrando-se no servidor de teste...");
+			Registry registry = LocateRegistry.getRegistry(8080);// null == localhost
 
 			// Recupera o objeto
-			IRemoteCalculadora stub = (IRemoteCalculadora) registry.lookup("servidor_aula");
+			IRemoteCalculadora stub = (IRemoteCalculadora) registry.lookup("servidor_trabalho");
 
-			// Chama o metodo
-			double resultado = stub.calcula(2.0, '+', 3.0);
+			Pessoa pessoa = new Pessoa(1, "João Ambrosini");
+			
+			System.out.println(stub.sacar(500, pessoa));
 
-			System.out.println("Resposta do servidor: " + resultado);
+			System.out.println(pessoa.getNome() +": "+ stub.verifica(pessoa) +"\n \n");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 }
+//rmiregistry (numPorta)
