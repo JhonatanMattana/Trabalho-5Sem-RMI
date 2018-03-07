@@ -1,5 +1,6 @@
 package trabalho.rmi.cliente;
 
+import java.math.BigDecimal;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -15,9 +16,9 @@ public class Cliente2 {
 			// Recupera o objeto
 			IRemoteCalculadora stub = (IRemoteCalculadora) registry.lookup("servidor_trabalho");
 
-			Pessoa pessoa = new Pessoa(1, "João Ambrosini");
-
-			System.out.println(stub.sacar(150, pessoa));
+			Pessoa pessoa = new Pessoa(2, "João Ambrosini");
+			stub.depositar(new BigDecimal(1000), pessoa);
+			System.out.println(stub.sacar(new BigDecimal(500), pessoa));
 
 			System.out.println(pessoa.getNome() + ": " + stub.verifica(pessoa) + "\n \n");
 		} catch (Exception e) {
