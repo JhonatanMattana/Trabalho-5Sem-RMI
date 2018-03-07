@@ -5,6 +5,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+import trabalho.rmi.cliente.Pessoa;
 import trabalho.rmi.remotebase.IRemoteCalculadora;
 import trabalho.rmi.server.Servidor;
 
@@ -13,21 +14,21 @@ public class Servidor implements IRemoteCalculadora {
 
 	public static void main(String[] args) {
 		try {
-			System.out.println("Construindo Servidor...");
+			System.out.println("Construindo Servidor de teste");
 
 			Servidor servidor = new Servidor();
 
 			// Porta do stub, se for 0, utiliza uma porta aleatoria.
 			IRemoteCalculadora stub = (IRemoteCalculadora) UnicastRemoteObject.exportObject(servidor, 0);
 
-			System.out.println("Registrando Servidor...");
+			System.out.println("Registrando Servidor de teste de novo");
 
 			// Liga o objeto remoto (stub) no registry
 			Registry registry = LocateRegistry.getRegistry(8080);// porta do rmiregistry
 
-			registry.bind("servidor_aula", stub);
+			registry.bind("servidor_trabalho_5Sem", stub);
 
-			System.out.println("Servidor iniciado!");
+			System.out.println("Servidor iniciado de boa!");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -35,27 +36,21 @@ public class Servidor implements IRemoteCalculadora {
 	}
 
 	@Override
-	public double calcula(double num1, char operacao, double num2) throws RemoteException {
-		conexoes++;
-		System.out.println("Requisitando método calcula do Servidor: " + conexoes);
+	public double verifica(Pessoa pessoa) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
-		double resultado = 0.0;
-		switch (operacao) {
-		case '+':
-			resultado = num1 + num2;
-			break;
-		case '-':
-			resultado = num1 - num2;
-			break;
-		case '*':
-			resultado = num1 * num2;
-			break;
-		case '/':
-			resultado = num1 / num2;
-			break;
+	@Override
+	public void depositar(double valor, Pessoa pessoa) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
 
-		}
-		return resultado;
+	@Override
+	public String sacar(double valor, Pessoa pessoa) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
