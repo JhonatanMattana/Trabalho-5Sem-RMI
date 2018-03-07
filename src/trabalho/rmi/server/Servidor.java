@@ -62,7 +62,7 @@ public class Servidor implements IRemoteCalculadora {
 		pessoa = temPessoa(pessoa);
 		return controlaSaque(valor, pessoa);
 	}
-
+//teste
 	private String controlaSaque(BigDecimal valor, Pessoa pessoa) {
 		if (pessoa.getTempoSaque() != null) {
 			if (pessoa.getControlaSaque().add(valor).compareTo(valorMaximoPraSaque) > 0) {
